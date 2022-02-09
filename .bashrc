@@ -160,4 +160,9 @@ mvg ()
     fi
 }
 
+# Used for GoLang
+export GOPATH=$HOME/go
+export GOROOT=/usr/lib/go
+export PATH="${GOPATH}/bin:${PATH}"
+
 screenfetch 
