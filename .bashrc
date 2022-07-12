@@ -7,11 +7,15 @@
 [ -z "$PS1" ] && return
 
 # dont put duplicate lines in the history and do not add lines that start with a space
-HISTCONTROL=erasedups:ignordups:ignorespace
+HISTCONTROL=erasedups:ignoredups:ignorespace
+
+# Ignore history, ls, ps, and exit commands in history file
 HISTIGNORE="&:history;ls:ls * ps:ps -A:[bf]g:exit"
 
 HISTSIZE=2000
-HISTFILESIZE=2000
+
+# Keep around 128K lines of history in file
+HISTFILESIZE=131072
 
 # appeneds to history instead of overwriting
 shopt -s histappend
@@ -23,10 +27,10 @@ shopt -s checkwinsize
 # lists any stopped or running jobs before exiting. requires two exits
 shopt -s checkjobs
 
-# use extra globbing features. See man bash, search extglob
+# use extra globbing features.ie !(foo), ?(bar|baz)...  See man bash, search extglob
 shopt -s extglob
 
-# include .files when globbing
+# include .files when globbing or pattern matching
 shopt -s dotglob
 
 # when a glob expands to nothing, make it an empty string instead of the literal characters
@@ -36,14 +40,29 @@ shopt -s nullglob
 # fix spelling errors for cd, only in interactive shell
 shopt -s cdspell
 
+# Fix small errors in directory names during completion
+shopt -s dirspell
+
+# Check that hashed commands still exist before running them
+shopt -s checkhash
+
+# Allow double-start globs to match files and recursive paths
 shopt -s globstar
 
 # auto change directory
 shopt -s autocd
 
-# protects from accidentally destroy content with the redirect (>) command. ie echo "test" > whatever.txt. Should be overwritable using >|. ie echo "test" >| whatever.txt.
+# Don't assume a word with a @ in it is a hostname
+shopt -u hostcomplete
 
-#shopt -o noclobber
+# Don't complete a Tab press on an empty line with every possible command
+shopt -s no_empty_cmd_completion
+
+# Use programmable completion, if available
+shopt -s progcomp
+
+# protects from accidentally destroy content with the redirect (>) command. ie echo "test" > whatever.txt. Should be overwritable using >|. ie echo "test" >| whatever.txt.
+shopt -o noclobber
 
 s() { # do sudo, or sudo the last command if no arguments given
     if [[ $# == 0 ]]; then
