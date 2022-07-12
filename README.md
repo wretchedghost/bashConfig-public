@@ -1,1 +1,1 @@
-# bashConfig-public
+# bashConfig
