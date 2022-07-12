@@ -1,5 +1,6 @@
 #### My Bash Config
 
+```bash
 # System-wide .bashrc file for interactive bash(1) shells.
 
 # To enable the settings / commands in this file for login shells as well,
@@ -187,3 +188,4 @@ export GOROOT=/usr/lib/go
 export PATH="${GOPATH}/bin:${PATH}"
 
 screenfetch 
+```
