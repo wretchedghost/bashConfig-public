@@ -1,8 +1,3 @@
-# System-wide .bashrc file for interactive bash(1) shells.
-
-# To enable the settings / commands in this file for login shells as well,
-# this file has to be sourced in /etc/profile.
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -178,10 +173,5 @@ mvg ()
         mv $1 $2
     fi
 }
-
-# Used for GoLang
-export GOPATH=$HOME/go
-export GOROOT=/usr/lib/go
-export PATH="${GOPATH}/bin:${PATH}"
 
 screenfetch 
