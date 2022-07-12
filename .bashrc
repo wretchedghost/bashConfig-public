@@ -62,7 +62,7 @@ shopt -s no_empty_cmd_completion
 shopt -s progcomp
 
 # protects from accidentally destroy content with the redirect (>) command. ie echo "test" > whatever.txt. Should be overwritable using >|. ie echo "test" >| whatever.txt.
-shopt -o noclobber
+set -o noclobber
 
 s() { # do sudo, or sudo the last command if no arguments given
     if [[ $# == 0 ]]; then
